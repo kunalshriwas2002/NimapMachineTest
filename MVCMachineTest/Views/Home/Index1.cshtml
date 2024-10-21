@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MVCMachineTest.Models.Product>
+
+@{
+    ViewBag.Title = "Index1";
+}
+
+<h2>Product Master</h2>
+@Html.Raw(TempData["InsertMessage"])
+@Html.Raw(TempData["UpdateMessage"])
+@Html.Raw(TempData["DeleteMessage"])
+
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>Operations</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.ActionLink("Insert", "Create1") |
+                @Html.ActionLink("Update", "Edit1", new { id = item.ProductId }) |               
+                @Html.ActionLink("Delete", "Delete1", new { id = item.ProductId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Back To CategoryMaster ", "Index") |
+    @Html.ActionLink("Show Product List", "Index2")
+</p>
